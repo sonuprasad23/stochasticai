@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Q&A Agent</title>
+    <meta name="description" content="AI-powered document intelligence system for research papers">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            <div class="status-dot"></div>
+            <div class="brand-info">
+                <span class="brand-title">Document Q&A // Research Agent</span>
+                <span class="brand-credits">
+                    Created for <a href="https://stochastic.ai/" target="_blank" class="credit-link">Stochastic.ai</a>
+                    by <a href="https://www.linkedin.com/in/sonuprasad23/" target="_blank" class="credit-link">Sonu
+                        Prasad</a>
+                    <a href="https://github.com/sonuprasad23" target="_blank" class="social-icon" title="GitHub">⌂</a>
+                </span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button class="pill" id="arxiv-btn">
+                <span>Search Arxiv</span>
+            </button>
+            <button class="pill accent" id="clear-btn">
+                <span>Clear</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1 class="sidebar-title">Papers</h1>
+                <p class="sidebar-subtitle">Your Document Library</p>
+            </div>
+
+            <div class="upload-zone" id="upload-zone">
+                <div class="upload-icon">↑</div>
+                <div class="upload-text">Drop PDF here</div>
+                <div class="upload-hint">or click to browse</div>
+            </div>
+
+            <div class="papers-section">
+                <div class="section-label">Search Papers</div>
+                <input type="text" class="paper-search" id="paper-search" placeholder="Filter by name...">
+
+                <div class="selected-paper-display" id="selected-paper-display" style="display: none;">
+                    <span class="selected-label">Filtering:</span>
+                    <span class="selected-paper-name"></span>
+                    <button class="clear-filter-btn" id="clear-paper-filter">×</button>
+                </div>
+
+                <div class="section-label">Indexed Documents</div>
+                <div class="paper-list" id="paper-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">◇</div>
+                        <div class="empty-text">No papers yet</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <span id="stats-papers">0 Papers</span>
+                <span id="stats-chunks">0 Chunks</span>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="chat-container" id="chat-container">
+                <div class="welcome-screen" id="welcome-screen">
+                    <h1 class="welcome-title">ASK<br>ANYTHING</h1>
+                    <p class="welcome-subtitle">
+                        Upload research papers and ask questions. Get precise, grounded answers with citations from your
+                        documents.
+                    </p>
+                    <div class="feature-pills">
+                        <span class="pill">Semantic Search</span>
+                        <span class="pill accent">Grounded Answers</span>
+                        <span class="pill green">Source Citations</span>
+                    </div>
+                </div>
+                <div class="messages-container" id="messages-container"></div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <textarea class="chat-input" id="chat-input" placeholder="Ask a question about your documents..."
+                        rows="1"></textarea>
+                    <button class="pill accent" id="send-btn">Send →</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="arxiv-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Arxiv Search</h2>
+                <button class="modal-close" id="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="search-input" id="arxiv-search-input"
+                    placeholder="Search by title, topic, or Arxiv ID...">
+                <div class="search-results" id="arxiv-results"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="pill" id="arxiv-search-btn">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <div class="modal-overlay pdf-modal" id="pdf-modal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <span class="pdf-modal-title">PDF Viewer</span>
+                <button class="modal-close" id="pdf-modal-close">×</button>
+            </div>
+            <iframe id="pdf-viewer" class="pdf-viewer"></iframe>
+        </div>
+    </div>
+
+    <input type="file" id="file-input" accept=".pdf">
+
+    <script src="/app.js"></script>
+</body>
+
+</html>
